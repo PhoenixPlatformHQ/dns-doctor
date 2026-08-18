@@ -18,48 +18,47 @@ spec:
 
     Output: human-readable with PASS/WARN/FAIL/INFO, or --output json.
 
-  # NOTE: This manifest is a stub for future Krew submission.
-  # SHA256 checksums and download URLs are populated by GoReleaser at release time.
-  # Do not submit to Krew until the public GitHub repository exists and binaries
-  # are available on a public release URL.
+  # SHA256 checksums sourced from the official checksums.txt in the v0.1.0 GitHub Release.
+  # Verified: 2026-08-18 — https://github.com/PhoenixPlatformHQ/dns-doctor/releases/tag/v0.1.0
+  # To verify locally: sha256sum --check checksums.txt
 
   platforms:
   - selector:
       matchLabels:
         os: linux
         arch: amd64
-    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_amd64.tar.gz
-    sha256: "PLACEHOLDER_SHA256_LINUX_AMD64"
+    uri: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_amd64.tar.gz
+    sha256: "915ac2d254d57951e5e19b33e562013634288db84bda3923cfb1064f3f9358d1"
     bin: kubectl-dns_doctor
 
   - selector:
       matchLabels:
         os: linux
         arch: arm64
-    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_arm64.tar.gz
-    sha256: "PLACEHOLDER_SHA256_LINUX_ARM64"
+    uri: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_arm64.tar.gz
+    sha256: "a1cd8318c279ca4b8dd5d4e19eb770b72ed3fe62a74ea3ffe31e85fab52a8868"
     bin: kubectl-dns_doctor
 
   - selector:
       matchLabels:
         os: darwin
         arch: amd64
-    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_amd64.tar.gz
-    sha256: "PLACEHOLDER_SHA256_DARWIN_AMD64"
+    uri: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_amd64.tar.gz
+    sha256: "e1ae273a6748040a078b4ebfd0910ec141572275cf02e129438dbac9e42e01d1"
     bin: kubectl-dns_doctor
 
   - selector:
       matchLabels:
         os: darwin
         arch: arm64
-    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_arm64.tar.gz
-    sha256: "PLACEHOLDER_SHA256_DARWIN_ARM64"
+    uri: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_arm64.tar.gz
+    sha256: "1730ccec777d003b2a18ce58cd7de1173e554d751b6578f67f2a9468f65629d0"
     bin: kubectl-dns_doctor
 
   - selector:
       matchLabels:
         os: windows
         arch: amd64
-    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_windows_amd64.zip
-    sha256: "PLACEHOLDER_SHA256_WINDOWS_AMD64"
+    uri: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_windows_amd64.zip
+    sha256: "70fc4f27e9fd371ed9dc6d63eb323ead14e15cd9bf563fafdfefaa35c2b399c2"
     bin: kubectl-dns_doctor.exe
