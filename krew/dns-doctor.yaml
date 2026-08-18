@@ -1,0 +1,65 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: dns-doctor
+spec:
+  version: v0.1.0
+  homepage: https://github.com/phoenix-platform/dns-doctor
+  shortDescription: "Narrow down Kubernetes DNS problems with one command"
+  description: |
+    dns-doctor runs a structured set of read-only checks against your cluster's
+    DNS configuration: CoreDNS service, pod health, restart counts, endpoints,
+    ConfigMap, Corefile warnings, NetworkPolicy presence, service/endpoint
+    consistency, and pod DNS config.
+
+    All data stays on your machine. Nothing is sent externally.
+    No cluster mutations are made in default mode.
+    Gracefully degrades when RBAC permissions are limited.
+
+    Output: human-readable with PASS/WARN/FAIL/INFO, or --output json.
+
+  # NOTE: This manifest is a stub for future Krew submission.
+  # SHA256 checksums and download URLs are populated by GoReleaser at release time.
+  # Do not submit to Krew until the public GitHub repository exists and binaries
+  # are available on a public release URL.
+
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_amd64.tar.gz
+    sha256: "PLACEHOLDER_SHA256_LINUX_AMD64"
+    bin: kubectl-dns_doctor
+
+  - selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_linux_arm64.tar.gz
+    sha256: "PLACEHOLDER_SHA256_LINUX_ARM64"
+    bin: kubectl-dns_doctor
+
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: amd64
+    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_amd64.tar.gz
+    sha256: "PLACEHOLDER_SHA256_DARWIN_AMD64"
+    bin: kubectl-dns_doctor
+
+  - selector:
+      matchLabels:
+        os: darwin
+        arch: arm64
+    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_darwin_arm64.tar.gz
+    sha256: "PLACEHOLDER_SHA256_DARWIN_ARM64"
+    bin: kubectl-dns_doctor
+
+  - selector:
+      matchLabels:
+        os: windows
+        arch: amd64
+    uri: https://github.com/phoenix-platform/dns-doctor/releases/download/v0.1.0/dns-doctor_0.1.0_windows_amd64.zip
+    sha256: "PLACEHOLDER_SHA256_WINDOWS_AMD64"
+    bin: kubectl-dns_doctor.exe

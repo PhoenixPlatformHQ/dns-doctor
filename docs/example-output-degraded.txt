@@ -1,0 +1,70 @@
+────────────────────────────────────────────────────────────
+  kubectl dns-doctor --namespace production
+────────────────────────────────────────────────────────────
+[PASS] Kubernetes API reachable
+  Fact:      API server responded to version check
+  Evidence:  Server version v1.27.9
+
+[INFO] Kubernetes context and cluster
+  Fact:      Active kubeconfig context and cluster resolved
+  Evidence:  context=prod-context  cluster=prod-cluster
+
+[PASS] Kubernetes DNS service discovery
+  Fact:      DNS service found in kube-system
+  Evidence:  service/kube-dns ClusterIP=10.96.0.10
+
+[PASS] DNS service ClusterIP
+  Fact:      DNS service has a valid ClusterIP
+  Evidence:  ClusterIP=10.96.0.10
+
+[FAIL] CoreDNS pod health
+  Fact:      CoreDNS pod coredns-7d89f6c5b-rk9p2 is not Running/Ready
+  Evidence:  phase=CrashLoopBackOff ready=false
+  Likely fault domain: CoreDNS pod may be crashing, pending, or evicted
+  Next check: kubectl describe pod -n kube-system coredns-7d89f6c5b-rk9p2
+
+[FAIL] CoreDNS pod coredns-7d89f6c5b-rk9p2 restart count
+  Fact:      CoreDNS pod coredns-7d89f6c5b-rk9p2 has elevated restart count (12)
+  Evidence:  restartCount=12 container=coredns
+  Likely fault domain: Repeated CoreDNS crashes — DNS resolution is likely degraded
+  Next check: kubectl logs -n kube-system coredns-7d89f6c5b-rk9p2 --previous
+
+[FAIL] CoreDNS endpoints availability
+  Fact:      DNS service/kube-dns has no ready endpoints
+  Evidence:  Subsets contain zero ready addresses
+  Likely fault domain: All CoreDNS pods may be unhealthy or not yet scheduled
+  Next check: kubectl get endpoints -n kube-system kube-dns
+
+[PASS] CoreDNS ConfigMap availability
+  Fact:      ConfigMap coredns found in kube-system
+  Evidence:  configmap/coredns  keys=[Corefile]
+
+[WARN] CoreDNS Corefile configuration
+  Fact:      No 'forward' directive found in Corefile
+  Evidence:  keyword 'forward' absent from Corefile text
+  Likely fault domain: External DNS resolution may fail — CoreDNS cannot forward queries to upstream resolvers
+  Next check: Add a forward . <upstream-DNS> block to the Corefile
+
+[WARN] NetworkPolicy presence
+  Fact:      NetworkPolicies are present in namespace "production" and may affect DNS egress — validate UDP/TCP port 53 access
+  Evidence:  2 NetworkPolicy object(s) found: [deny-all-egress restrict-ingress]
+  Likely fault domain: A NetworkPolicy may be restricting egress to port 53 (UDP/TCP) required for DNS resolution
+  Next check: kubectl get networkpolicy -n production -o yaml   # review egress rules for port 53
+
+[WARN] Service default/frontend endpoint consistency
+  Fact:      Service "frontend" has no ready endpoints — DNS will resolve but connections will fail
+  Evidence:  Endpoints object contains zero ready addresses
+  Likely fault domain: No pods are Ready and selected by this Service — TCP connections will be refused after DNS resolution
+  Next check: kubectl get endpoints -n production frontend
+
+[INFO] Pod DNS configuration
+  Fact:      No --pod flag supplied; pod DNS configuration check skipped
+  Evidence:  Pass --pod <name> to inspect a specific pod's DNS config
+
+[FAIL] Diagnostic summary
+  Fact:      DNS Doctor detected potential issues — 3 FAIL  3 WARN
+  Evidence:  total checks evaluated: 13
+  Likely fault domain: Review individual check results above for specific fault domains
+  Next check: kubectl describe pod -n kube-system coredns-7d89f6c5b-rk9p2  |  kubectl logs -n kube-system coredns-7d89f6c5b-rk9p2 --previous  |  kubectl get endpoints -n kube-system kube-dns
+
+Summary: 3 PASS  3 WARN  3 FAIL  2 INFO

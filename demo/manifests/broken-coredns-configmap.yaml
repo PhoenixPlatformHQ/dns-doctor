@@ -1,0 +1,38 @@
+# broken-coredns-configmap.yaml
+#
+# Demo manifest: CoreDNS ConfigMap with a Corefile that is missing the
+# 'forward' directive. dns-doctor should report [WARN] for check 9.
+#
+# Usage:
+#   kubectl apply -f broken-coredns-configmap.yaml
+#   kubectl dns-doctor
+#   kubectl apply -f <original-coredns-configmap>   # restore after demo
+#
+# WARNING: Applying this to a real cluster will break external DNS resolution
+# for all workloads. Use only in a throwaway lab cluster (e.g. kind, minikube).
+#
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns
+  namespace: kube-system
+data:
+  Corefile: |
+    .:53 {
+        errors
+        health {
+           lameduck 5s
+        }
+        ready
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+           pods insecure
+           fallthrough in-addr.arpa ip6.arpa
+           ttl 30
+        }
+        prometheus :9153
+        # forward directive intentionally removed to trigger dns-doctor WARN
+        cache 30
+        loop
+        reload
+        loadbalance
+    }

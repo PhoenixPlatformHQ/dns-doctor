@@ -1,0 +1,27 @@
+# networkpolicy-deny-dns.yaml
+#
+# Demo manifest: a NetworkPolicy that denies all egress from pods in the
+# dns-doctor-demo namespace. This blocks DNS egress (UDP/TCP port 53).
+# dns-doctor should report [WARN] for check 10 when run against this namespace.
+#
+# NOTE: dns-doctor flags the PRESENCE of NetworkPolicies — it does not
+# evaluate whether the rules actually block DNS. This demo shows the
+# intended WARN output. To confirm DNS is actually blocked, test from
+# a pod in the namespace.
+#
+# Usage:
+#   kubectl apply -f no-endpoints-service.yaml          # creates the namespace
+#   kubectl apply -f networkpolicy-deny-dns.yaml
+#   kubectl dns-doctor --namespace dns-doctor-demo
+#   kubectl delete namespace dns-doctor-demo            # cleanup
+#
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: deny-all-egress
+  namespace: dns-doctor-demo
+spec:
+  podSelector: {}          # applies to all pods in the namespace
+  policyTypes:
+    - Egress
+  # No egress rules = deny all egress, including DNS port 53

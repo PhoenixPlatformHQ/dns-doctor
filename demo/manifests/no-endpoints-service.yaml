@@ -1,0 +1,27 @@
+# no-endpoints-service.yaml
+#
+# Demo manifest: a Service with a selector that matches no pods,
+# so its Endpoints object will have zero ready addresses.
+# dns-doctor should report [WARN] for check 11.
+#
+# Usage:
+#   kubectl apply -f no-endpoints-service.yaml
+#   kubectl dns-doctor --namespace dns-doctor-demo
+#   kubectl delete namespace dns-doctor-demo   # cleanup
+#
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dns-doctor-demo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orphaned-service
+  namespace: dns-doctor-demo
+spec:
+  selector:
+    app: does-not-exist   # intentionally selects nothing
+  ports:
+    - port: 80
+      targetPort: 8080

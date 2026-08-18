@@ -1,0 +1,65 @@
+────────────────────────────────────────────────────────────
+  kubectl dns-doctor
+────────────────────────────────────────────────────────────
+[PASS] Kubernetes API reachable
+  Fact:      API server responded to version check
+  Evidence:  Server version v1.28.4
+
+[INFO] Kubernetes context and cluster
+  Fact:      Active kubeconfig context and cluster resolved
+  Evidence:  context=kind-kind  cluster=kind-kind
+
+[PASS] Kubernetes DNS service discovery
+  Fact:      DNS service found in kube-system
+  Evidence:  service/kube-dns ClusterIP=10.96.0.10
+
+[PASS] DNS service ClusterIP
+  Fact:      DNS service has a valid ClusterIP
+  Evidence:  ClusterIP=10.96.0.10
+
+[PASS] CoreDNS pod health
+  Fact:      CoreDNS pod coredns-5d78c9869d-abc12 is Running and Ready
+  Evidence:  phase=Running ready=true
+
+[PASS] CoreDNS pod coredns-5d78c9869d-abc12 restart count
+  Fact:      CoreDNS pod restart count is zero
+  Evidence:  restartCount=0 container=coredns
+
+[PASS] CoreDNS pod coredns-5d78c9869d-xqr77 is Running and Ready
+  Fact:      CoreDNS pod coredns-5d78c9869d-xqr77 is Running and Ready
+  Evidence:  phase=Running ready=true
+
+[PASS] CoreDNS pod coredns-5d78c9869d-xqr77 restart count
+  Fact:      CoreDNS pod restart count is zero
+  Evidence:  restartCount=0 container=coredns
+
+[PASS] CoreDNS endpoints availability
+  Fact:      DNS service/kube-dns has 2 ready endpoint(s)
+  Evidence:  readyAddresses=2
+
+[PASS] CoreDNS ConfigMap availability
+  Fact:      ConfigMap coredns found in kube-system
+  Evidence:  configmap/coredns  keys=[Corefile]
+
+[PASS] CoreDNS Corefile configuration
+  Fact:      No obvious configuration warnings detected in Corefile
+  Evidence:  forward and loop directives are present
+
+[PASS] NetworkPolicy presence
+  Fact:      No NetworkPolicies found in namespace "default"
+  Evidence:  NetworkPolicy list returned 0 items — DNS egress is not restricted by a NetworkPolicy in this namespace
+
+[INFO] Service/endpoint consistency
+  Fact:      No Services found in namespace "default"
+  Evidence:  Service list returned 0 items
+
+[INFO] Pod DNS configuration
+  Fact:      No --pod flag supplied; pod DNS configuration check skipped
+  Evidence:  Pass --pod <name> to inspect a specific pod's DNS config
+
+[PASS] Diagnostic summary
+  Fact:      All checks passed — no DNS anomalies detected
+  Evidence:  0 FAIL  0 WARN
+  Next check: If you are still experiencing DNS issues, consider running with --probe (once implemented) to perform active DNS resolution tests from within the cluster
+
+Summary: 10 PASS  0 WARN  0 FAIL  4 INFO
