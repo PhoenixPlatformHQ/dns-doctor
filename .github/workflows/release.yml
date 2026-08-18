@@ -18,9 +18,6 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: tools/dns-doctor
 
     steps:
       - name: Checkout
@@ -33,7 +30,7 @@ jobs:
         with:
           go-version: "1.21"
           cache: true
-          cache-dependency-path: tools/dns-doctor/go.sum
+          cache-dependency-path: go.sum
 
       - name: Run tests before release
         run: go test ./... -count=1
@@ -45,7 +42,6 @@ jobs:
           distribution: goreleaser
           version: latest
           args: release --clean
-          workdir: tools/dns-doctor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -53,9 +49,9 @@ jobs:
         uses: actions/attest-build-provenance@v1
         with:
           subject-path: |
-            tools/dns-doctor/dist/dns-doctor_*_linux_amd64.tar.gz
-            tools/dns-doctor/dist/dns-doctor_*_linux_arm64.tar.gz
-            tools/dns-doctor/dist/dns-doctor_*_darwin_amd64.tar.gz
-            tools/dns-doctor/dist/dns-doctor_*_darwin_arm64.tar.gz
-            tools/dns-doctor/dist/dns-doctor_*_windows_amd64.zip
-            tools/dns-doctor/dist/checksums.txt
+            dist/dns-doctor_*_linux_amd64.tar.gz
+            dist/dns-doctor_*_linux_arm64.tar.gz
+            dist/dns-doctor_*_darwin_amd64.tar.gz
+            dist/dns-doctor_*_darwin_arm64.tar.gz
+            dist/dns-doctor_*_windows_amd64.zip
+            dist/checksums.txt
