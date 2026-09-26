@@ -2,7 +2,7 @@
 
 **One command to narrow down Kubernetes DNS problems.**
 
-> **Brand transition:** DNS Doctor keeps its name and is now maintained under the **Serdhub** master brand. The current repository name and URLs remain unchanged during the transition.
+> Maintained by **Serdhub**.
 
 `kubectl dns-doctor` is a **free, open-source** kubectl plugin that runs a
 structured set of read-only checks against your cluster's DNS configuration
