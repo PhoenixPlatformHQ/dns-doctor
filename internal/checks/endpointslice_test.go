@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/phoenix-platform/dns-doctor/internal/checks"
-	"github.com/phoenix-platform/dns-doctor/internal/output"
+	"github.com/Serdhub/dns-doctor/internal/checks"
+	"github.com/Serdhub/dns-doctor/internal/output"
 	discoveryv1 "k8s.io/api/discovery/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes/fake"
