@@ -1,4 +1,4 @@
-module github.com/phoenix-platform/dns-doctor
+module github.com/Serdhub/dns-doctor
 
 go 1.21
 
