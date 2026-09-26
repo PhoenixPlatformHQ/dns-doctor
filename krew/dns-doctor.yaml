@@ -4,7 +4,7 @@ metadata:
   name: dns-doctor
 spec:
   version: v0.1.0
-  homepage: https://github.com/phoenix-platform/dns-doctor
+  homepage: https://github.com/PhoenixPlatformHQ/dns-doctor
   shortDescription: "Narrow down Kubernetes DNS problems with one command"
   description: |
     dns-doctor runs a structured set of read-only checks against your cluster's
