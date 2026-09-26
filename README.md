@@ -2,6 +2,8 @@
 
 **One command to narrow down Kubernetes DNS problems.**
 
+> **Brand transition:** DNS Doctor keeps its name and is now maintained under the **Serdhub** master brand. The current repository name and URLs remain unchanged during the transition.
+
 `kubectl dns-doctor` is a **free, open-source** kubectl plugin that runs a
 structured set of read-only checks against your cluster's DNS configuration
 and reports what it finds — without guessing, without mutations, and without
@@ -97,7 +99,7 @@ Validation of these distributions is tracked as a post-v0.1.0 backlog item.
 
 **Local-first.** dns-doctor reads from your cluster via the Kubernetes API
 using your existing kubeconfig credentials. No data is transmitted to any
-external service, analytics platform, or Phoenix infrastructure. Nothing is
+external service, analytics platform, or Serdhub infrastructure. Nothing is
 stored on disk. The tool never mutates cluster state in default mode.
 
 The `--probe` flag (planned, not yet implemented) would create a temporary
@@ -130,7 +132,7 @@ message. All other checks continue.
 ### From source (requires Go 1.21+)
 
 ```bash
-git clone https://github.com/phoenix-platform/dns-doctor
+git clone https://github.com/PhoenixPlatformHQ/dns-doctor
 cd dns-doctor
 make build
 # Move the binary somewhere on your PATH with the kubectl plugin prefix:
@@ -140,7 +142,7 @@ mv kubectl-dns_doctor /usr/local/bin/kubectl-dns_doctor
 ### Pre-built binary
 
 Download the binary for your platform from the
-[GitHub Releases page](https://github.com/phoenix-platform/dns-doctor/releases).
+[GitHub Releases page](https://github.com/PhoenixPlatformHQ/dns-doctor/releases).
 
 Rename it `kubectl-dns_doctor` (or `kubectl-dns_doctor.exe` on Windows) and
 place it on your `PATH`. kubectl discovers plugins by prefix: any executable
@@ -277,7 +279,7 @@ Every release includes:
   Verify with:
   ```bash
   gh attestation verify dns-doctor_0.1.0_linux_amd64.tar.gz \
-    --owner phoenix-platform
+    --owner PhoenixPlatformHQ
   ```
 
 Binaries are **not** GPG-signed or Cosign-signed in this release.
