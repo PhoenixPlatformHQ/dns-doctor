@@ -4,8 +4,8 @@ package runner
 import (
 	"context"
 
-	"github.com/phoenix-platform/dns-doctor/internal/checks"
-	"github.com/phoenix-platform/dns-doctor/internal/output"
+	"github.com/Serdhub/dns-doctor/internal/checks"
+	"github.com/Serdhub/dns-doctor/internal/output"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd/api"
 )
