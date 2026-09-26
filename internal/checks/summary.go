@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/phoenix-platform/dns-doctor/internal/output"
+	"github.com/Serdhub/dns-doctor/internal/output"
 )
 
 // RunSummaryCheck implements check 13: build an actionable next-step summary

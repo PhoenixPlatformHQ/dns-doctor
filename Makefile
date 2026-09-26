@@ -1,5 +1,5 @@
 BINARY    := dns-doctor
-MODULE    := github.com/phoenix-platform/dns-doctor
+MODULE    := github.com/Serdhub/dns-doctor
 CMD       := ./cmd/dns-doctor
 VERSION   := 0.1.0
 LDFLAGS   := -ldflags "-X main.version=$(VERSION)"
