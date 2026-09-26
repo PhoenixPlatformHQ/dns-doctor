@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/phoenix-platform/dns-doctor/internal/output"
-	"github.com/phoenix-platform/dns-doctor/internal/runner"
+	"github.com/Serdhub/dns-doctor/internal/output"
+	"github.com/Serdhub/dns-doctor/internal/runner"
 	"github.com/spf13/cobra"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
