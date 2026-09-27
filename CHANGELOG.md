@@ -58,5 +58,5 @@ First public release.
 
 ---
 
-[Unreleased]: https://github.com/PhoenixPlatformHQ/dns-doctor/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/PhoenixPlatformHQ/dns-doctor/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Serdhub/dns-doctor/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Serdhub/dns-doctor/releases/tag/v0.1.0
