@@ -7,7 +7,7 @@ export GOFLAGS=""
 export GIT_TERMINAL_PROMPT=0
 export GOPROXY="https://proxy.golang.org,direct"
 export GOPATH=/tmp/gopath_dnd
-REPO=/mnt/c/dev/PhoenixPlatform/tools/dns-doctor
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$REPO"
 
 echo "=== go version ==="
