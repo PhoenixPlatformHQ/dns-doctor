@@ -132,7 +132,7 @@ message. All other checks continue.
 ### From source (requires Go 1.21+)
 
 ```bash
-git clone https://github.com/PhoenixPlatformHQ/dns-doctor
+git clone https://github.com/Serdhub/dns-doctor
 cd dns-doctor
 make build
 # Move the binary somewhere on your PATH with the kubectl plugin prefix:
@@ -142,7 +142,7 @@ mv kubectl-dns_doctor /usr/local/bin/kubectl-dns_doctor
 ### Pre-built binary
 
 Download the binary for your platform from the
-[GitHub Releases page](https://github.com/PhoenixPlatformHQ/dns-doctor/releases).
+[GitHub Releases page](https://github.com/Serdhub/dns-doctor/releases).
 
 Rename it `kubectl-dns_doctor` (or `kubectl-dns_doctor.exe` on Windows) and
 place it on your `PATH`. kubectl discovers plugins by prefix: any executable
@@ -279,7 +279,7 @@ Every release includes:
   Verify with:
   ```bash
   gh attestation verify dns-doctor_0.1.0_linux_amd64.tar.gz \
-    --owner PhoenixPlatformHQ
+    --owner Serdhub
   ```
 
 Binaries are **not** GPG-signed or Cosign-signed in this release.
